@@ -17,23 +17,33 @@ jQuery(function($) {
 		var $Ribbon = $Element.find('.Ribbon'),
 			$Close = $Element.find('.Close'),
 			$Nav = $Element.find('.Navlist'),
-			$Links = $Element.find('.Navlist a');
+			$Links = $Element.find('.Navlist a'),
+			$Submenus = $Element.find('ul > li > ul');
 
-
+		$Submenus.slideUp(0);
 		$Ribbon.on('click', function() { $Element.toggleClass('Active'); });
 		$Close.on('click', function() { $Element.removeClass('Active'); });
-		//$Window.on('resize scroll', function() { $Element.removeClass('Active'); });
 
 		$Links.on('click', function(e) {
 			e.preventDefault();
-			
-			var Href = $(this).attr('href');
-			$Element.removeClass('Active'); 
-			$('html, body').animate({
-				scrollTop: $(Href).offset().top
-			}, 1800, 'easeInOutCubic', function(){ 
-				window.location.hash = Href.replace('#','');
-			});
+
+			var $This = $(this);
+			var Href = $This.attr('href');
+
+			if ($This.next().hasClass('Active') || $This.parent().parent().prev().attr('href')) {
+				$('html, body').animate({
+					scrollTop: $(Href).offset().top
+				}, 1800, 'easeInOutCubic', function(){ 
+					window.location.hash = Href.replace('#','');
+					$Element.removeClass('Active');
+				});
+			} else {
+				$Submenus.slideUp(600, 'easeInOutCubic');
+				$Submenus.removeClass('Active');
+				$This.next().addClass('Active');
+				$This.next().slideDown(600, 'easeInOutCubic');				
+			}
+
 
 			return false;
 		});
@@ -95,7 +105,7 @@ jQuery(function($) {
 		}
 		
 		function _Animate() {
-			window.sr = ScrollReveal({viewFactor: 0.3, opacity:1, scale:1, distance:0,duration: 1000});
+			window.sr = ScrollReveal({viewFactor: 0.2, opacity:1, scale:1, distance:0,duration: 1000});
 			
 			sr.reveal(".Section", { 
 				reset:true, 
