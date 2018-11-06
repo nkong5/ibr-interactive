@@ -48,8 +48,8 @@ jQuery(function($) {
 			return false;
 		});
 
-		$(window).on('scroll', function() {
-			if ($('body,html').scrollTop() > $Window.height() ) { $Element.removeClass('Disabled'); } else { $Element.addClass('Disabled').removeClass('Active'); }
+		$(document).on('scroll', function() {
+			if ($Window.scrollTop() > $Window.height() ) { $Element.removeClass('Disabled'); } else { $Element.addClass('Disabled').removeClass('Active'); }
 		})
 	}
 
@@ -119,7 +119,7 @@ jQuery(function($) {
 			
 			sr.reveal(".StoryBoxes .Box, .ChapterBox", { 
 				reset:false, 
-				opacity:0,
+				beforeReveal: function(El) { $(El).addClass('Active'); }, 
 				viewFactor: 0.2
 			});
 		}
