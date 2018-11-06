@@ -31,11 +31,11 @@ jQuery(function($) {
 			var Href = $This.attr('href');
 
 			if ($This.next().hasClass('Active') || $This.parent().parent().prev().attr('href')) {
+				$Element.removeClass('Active');
 				$('html, body').animate({
 					scrollTop: $(Href).offset().top
 				}, 1800, 'easeInOutCubic', function(){ 
 					window.location.hash = Href.replace('#','');
-					$Element.removeClass('Active');
 				});
 			} else {
 				$Submenus.slideUp(600, 'easeInOutCubic');
@@ -47,6 +47,10 @@ jQuery(function($) {
 
 			return false;
 		});
+
+		$(window).on('scroll', function() {
+			if ($('body,html').scrollTop() > $Window.height() ) { $Element.removeClass('Disabled'); } else { $Element.addClass('Disabled').removeClass('Active'); }
+		})
 	}
 
 	function Preloader() {
