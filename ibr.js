@@ -80,11 +80,6 @@ jQuery(function($) {
 
 		Owl.on('changed.owl.carousel', function(event) {
 			if (event.item.index == 2 && event.property.name == 'position') { $('body,html').animate({scrollTop: $Window.height()}, '1500'); }
-			if (event.item.index == 4 && event.property.name == 'position') { 
-				$Content.addClass('Active');
-			} else {
-				$Content.removeClass('Active');
-			}
 		})
 	}
 	function Backgrounds() {
