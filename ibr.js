@@ -128,6 +128,8 @@ jQuery(function($) {
 			var $El = $(El);
 			var $Stack = $BackgroundStack.find('[data-section=\'' + $El.attr('data-section') + '\']');
 			
+			if ($El.index()) { $BackgroundStack.find('[data-section]').removeClass('Visible'); }
+
 			$El.addClass('Visible');
 			$Stack.addClass('Visible');
 			if (!$Stack.hasClass('Seen')) { _Load(El); }
@@ -149,10 +151,11 @@ jQuery(function($) {
 			
 		}
 		function _Hide(El) {
+
 			var $El = $(El);
 			
 			$El.removeClass('Visible');
-			$BackgroundStack.find('[data-section=\'' + $El.attr('data-section') + '\']').removeClass('Visible');
+			//$BackgroundStack.find('[data-section=\'' + $El.attr('data-section') + '\']').removeClass('Visible');//
 		}
 		
 	}

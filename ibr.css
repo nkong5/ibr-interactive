@@ -57,7 +57,7 @@ h2 { font-size:1em; font-weight:800; }
     .Stack > div > img { width:90%; height:auto; }
 }
 
-.Section { display:block; overflow:hidden; width:100%; padding-top:70%; margin-bottom:30%; min-height:100vh; }
+.Section { display:block; overflow:hidden; width:100%; padding-top:30%; margin-bottom:0%; min-height:100vh; }
 .Section[data-section='Intro'] { height:100vh; background:#e7e7e7; position:relative; }
 .Section:last-child { margin-bottom:0; padding-bottom:10%; }
 
@@ -93,7 +93,7 @@ h2 { font-size:1em; font-weight:800; }
 
 @media (max-width:1777px) {
     .StoryBoxes > div:nth-child(3) { padding-right:0px; }
-    .StoryBoxes > div:nth-child(3)::before { left:515px; right:auto; transform:rotate(45deg); transform-origin:0% 50%; }
+    .StoryBoxes > div:nth-child(3)::before { right:475px; left:auto; transform:rotate(45deg); transform-origin:0% 50%; }
 
     .StoryBoxes[data-style='Reverse']  > div:nth-child(3) { padding-left:0; }
     .StoryBoxes[data-style='Reverse']  > div:nth-child(3)::before {  left:475px; right:auto; transform:rotate(-45deg); transform-origin:100% 50%;  }
@@ -263,9 +263,11 @@ li:last-child > .GreyList { margin-bottom:0; }
 @media (max-width:640px) {
     .Section { padding-top:200vh; margin-bottom:0; }
 }
+
+/*
 @keyframes Scroll { 0% { top: 10%; opacity: 1; } 80% { opacity: 1; } 100% { top: 30%; opacity: 0; } }
 
 .Scroll { opacity:.5; position: fixed; top: 50%; left: 50%; width: 34px; height: 64px; margin-top: -32px; margin-left: -17px; z-index:-2; }
 .Scroll .Inner { width: 30px; height: 60px; position: relative; border-radius: 19px; border: 2px solid #ffffff; }
 .Scroll .Wheel { position: absolute; top: 10%; left: 50%; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background-color: #ffffff; animation: Scroll 0.9s infinite; }
-  
+*/
