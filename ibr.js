@@ -10,6 +10,22 @@ jQuery(function($) {
 	Backgrounds();
 	Owl();
 	Menu();
+	BackTop();
+	function BackTop() {
+		var $Element = $('#BackTop');
+
+		$Element.on('click', function() {
+			$('html, body').animate({
+				scrollTop: 0
+			}, 2800);
+
+			return false;
+		});
+
+		$(document).on('scroll', function() {
+			if ($Window.scrollTop() > $Body.height() * 0.4 ) { $Element.addClass('Visible'); } else { $Element.removeClass('Visible'); }
+		});
+	}
 
 	function Menu() {
 		var $Element = $('#Menu');
@@ -79,8 +95,15 @@ jQuery(function($) {
 		});
 
 		Owl.on('changed.owl.carousel', function(event) {
-			if (event.item.index == 2 && event.property.name == 'position') { $('body,html').animate({scrollTop: $Window.height()}, '1500'); }
+			$Owl.find('.owl-prev').addClass('Enabled');
+			if (event.item.index == 2 && event.property.name == 'position') { $Owl.find('.owl-prev').removeClass('Enabled'); }
 		})
+
+		$Owl.on('click', '.owl-next', function() {
+			if ($Owl.find('.owl-item.active .StepsItem').hasClass('First')) {
+				$('body,html').animate({scrollTop: $('#Intro__Content').offset().top }, '1500');
+			}
+		});
 	}
 	function Backgrounds() {
 		_Prepare();
@@ -117,12 +140,21 @@ jQuery(function($) {
 				beforeReveal: function(El) { $(El).addClass('Active'); }, 
 				viewFactor: 0.2
 			});
+
+			sr.reveal(".StoryBoxes .Box h3, .ChapterBox h2", { 
+				reset:true, 
+				beforeReveal: function(El) { $BackgroundStack.addClass('Faded'); }, 
+				viewFactor: 1
+			});
+			
 		}
 		
 		function _Show(El) {
 			var $El = $(El);
 			var $Stack = $BackgroundStack.find('[data-section=\'' + $El.attr('data-section') + '\']');
-			
+
+			$BackgroundStack.removeClass('Faded');
+
 			if ($El.index()) { $BackgroundStack.find('[data-section]').removeClass('Visible'); }
 
 			$El.addClass('Visible');
