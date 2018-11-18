@@ -140,7 +140,7 @@ h2 > span, h3 > span { opacity:0.5; margin-right:.1em;}
 .GreyList > li:last-child { margin-bottom:0; }
 li:last-child > .GreyList { margin-bottom:0; }
 
-.Label { transition:.3s background ease; line-height:1em; font-size:12px; letter-spacing:.1em; display:inline-block; text-transform:uppercase; border-radius:5px; text-decoration:none; width:inline-block; padding:5px 15px; min-width:165px; text-align:center; position:relative; }
+.Label { transition:.3s background ease; line-height:1em; font-size:12px; letter-spacing:.1em; display:inline-block; text-transform:uppercase; border-radius:5px; text-decoration:none; padding:5px 15px; min-width:165px; text-align:center; position:relative; }
 .Label[data-style='Dark'] { background:#484848; color:#dedede; }
 
 .ButtonDl { transition:.3s background ease; font-size:12px; line-height:1em; display:block; border-radius:5px; text-decoration:none; width:inline-block; padding:5px; width:150px; text-align:center; margin-left:55px; position:relative; }
@@ -210,10 +210,10 @@ li:last-child > .GreyList { margin-bottom:0; }
     .BackTop {-webkit-box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.25); -moz-box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.25); box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.25); left:auto; right:0;}
 }
    
-.Menu { z-index:50; position:fixed; left:0; top:0; height:100%; box-sizing:border-box; padding:60px 0; width:400px; transition:.6s transform ease; transform:translate3d(-100%,0,0); }
+.Menu { z-index:50; position:fixed; left:0; top:0; height:100%; box-sizing:border-box; width:410px; transition:.6s transform ease; transform:translate3d(-100%,0,0); }
 .Menu.Active { transform:translate3d(0,0,0); }
 .Menu.Disabled { transform:translate3d(-120%,0,0)!important; }
-.Menu .Wrapper { overflow:hidden; position:relative; background:#e7e7e7; height:100%; -webkit-box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.25); -moz-box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.25); box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.25); box-sizing:border-box; padding:30px 30px 20px 30px;}
+.Menu .Wrapper { overflow-x:hidden; overflow-y:auto; position:relative; background:#e7e7e7; height:100%; box-sizing:border-box; padding:30px 30px 20px 30px;}
 .Menu .Logo { padding:0 3px; margin-bottom:20px; width:80px; }
 .Menu .Close { outline:0!important; position:absolute; top:20px; right:20px; display:block; width:31px; height:31px; border:1px solid #484848; transition:.3s background ease; }
 .Menu .Close::before { transition:.3s background ease; position:absolute; top:2px; left:14px; transform:rotate(45deg); height:25px; width:1px; background:#484848; content:' '; }
@@ -263,9 +263,7 @@ li:last-child > .GreyList { margin-bottom:0; }
 }
 @media (min-width:641px) and (max-height:720px) {
     .Menu .Logo { display:none; }
-}
-@media (min-width:641px) and (max-height:540px) {
-    .Menu .Wrapper { overflow-y:auto; }
+    .Menu .Lbl { margin-top:40px; }
 }
 
 @media (max-width:640px) {

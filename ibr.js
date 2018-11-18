@@ -65,7 +65,7 @@ jQuery(function($) {
 		});
 
 		$(document).on('scroll', function() {
-			if ($Window.scrollTop() > $Window.height() ) { $Element.removeClass('Disabled'); } else { $Element.addClass('Disabled').removeClass('Active'); }
+			if ($Window.scrollTop() > $Window.height() * 0.5 ) { $Element.removeClass('Disabled'); } else { $Element.addClass('Disabled').removeClass('Active'); }
 		})
 	}
 
