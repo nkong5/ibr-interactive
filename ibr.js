@@ -4,7 +4,8 @@ jQuery(function($) {
 	var $Body = $('body'),
 		$Window = $(window),
 		$BackgroundStack = $('#Stack'),
-		$Sections = $('.Section');
+		$Sections = $('.Section'),
+		$Document = $(document);
 		
 	Preloader();
 	Backgrounds();
@@ -52,6 +53,7 @@ jQuery(function($) {
 					scrollTop: $(Href).offset().top
 				}, 1800, 'easeInOutCubic', function(){ 
 					window.location.hash = Href.replace('#','');
+					$BackgroundStack.removeClass('Faded');
 				});
 			} else {
 				$Submenus.slideUp(600, 'easeInOutCubic');
@@ -136,8 +138,16 @@ jQuery(function($) {
 			});
 			
 			sr.reveal(".StoryBoxes .Box, .ChapterBox", { 
-				reset:false, 
+				reset:true, 
 				beforeReveal: function(El) { $(El).addClass('Active'); }, 
+				beforeReset: function(El) { 
+					var $El = $(El);
+					if ($El.hasClass('First')) {
+						if($El.offset().top - $Document.scrollTop() > 0) {
+							$BackgroundStack.removeClass('Faded');
+						}
+					}
+				 }, 
 				viewFactor: 0.2
 			});
 
