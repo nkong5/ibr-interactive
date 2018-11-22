@@ -5,7 +5,8 @@ jQuery(function($) {
 		$Window = $(window),
 		$BackgroundStack = $('#Stack'),
 		$Sections = $('.Section'),
-		$Document = $(document);
+		$Document = $(document),
+		$Intro = $('#intro');
 		
 	Preloader();
 	Backgrounds();
@@ -24,7 +25,7 @@ jQuery(function($) {
 		});
 
 		$(document).on('scroll', function() {
-			if ($Window.scrollTop() > $Body.height() * 0.4 ) { $Element.addClass('Visible'); } else { $Element.removeClass('Visible'); }
+			if ($Window.scrollTop() > $Intro.height() ) { $Element.addClass('Visible'); } else { $Element.removeClass('Visible'); }
 		});
 	}
 
@@ -50,10 +51,12 @@ jQuery(function($) {
 			if ($This.next().hasClass('Active') || $This.parent().parent().prev().attr('href')) {
 				$Element.removeClass('Active');
 				$('html, body').animate({
-					scrollTop: $(Href).offset().top
+					scrollTop: $(Href).offset().top + ($Window.height() * 0.2)
 				}, 1800, 'easeInOutCubic', function(){ 
 					window.location.hash = Href.replace('#','');
 					$BackgroundStack.removeClass('Faded');
+
+					_Show(Href);
 				});
 			} else {
 				$Submenus.slideUp(600, 'easeInOutCubic');
@@ -107,6 +110,43 @@ jQuery(function($) {
 			}
 		});
 	}
+
+	
+	function _Show(El) {
+		var $El = $(El);
+		var $Stack = $BackgroundStack.find('[data-section=\'' + $El.attr('data-section') + '\']');
+
+		$BackgroundStack.removeClass('Faded');
+
+		if ($El.index()) { $BackgroundStack.find('[data-section]').removeClass('Visible'); }
+
+		$El.addClass('Visible');
+		$Stack.addClass('Visible');
+		if (!$Stack.hasClass('Seen')) { _Load(El); }
+		$Stack.addClass('Seen');
+	}
+	
+	
+	function _Load(El) {
+		var $El = $(El);
+		var $Stack = $BackgroundStack.find('[data-section=\'' + $El.attr('data-section') + '\']');
+		var $Prev = $Stack.find('.Stack__Image');
+		var $Loaded = $Stack.find('.Stack__Loaded');
+		
+		$Prev.on('load', function() { $(this).addClass('Preloaded'); });
+		$Loaded.on('load', function() { $(this).addClass('Preloaded'); });
+		
+		$Prev.attr('src', $Prev.attr('data-image'));
+		$Loaded.attr('src', $Loaded.attr('data-image-loaded'));
+		
+	}
+	function _Hide(El) {
+
+		var $El = $(El);
+		
+		$El.removeClass('Visible');
+		//$BackgroundStack.find('[data-section=\'' + $El.attr('data-section') + '\']').removeClass('Visible');//
+	}
 	function Backgrounds() {
 		_Prepare();
 		_Animate();
@@ -159,41 +199,6 @@ jQuery(function($) {
 			
 		}
 		
-		function _Show(El) {
-			var $El = $(El);
-			var $Stack = $BackgroundStack.find('[data-section=\'' + $El.attr('data-section') + '\']');
-
-			$BackgroundStack.removeClass('Faded');
-
-			if ($El.index()) { $BackgroundStack.find('[data-section]').removeClass('Visible'); }
-
-			$El.addClass('Visible');
-			$Stack.addClass('Visible');
-			if (!$Stack.hasClass('Seen')) { _Load(El); }
-			$Stack.addClass('Seen');
-		}
-		
-		
-		function _Load(El) {
-			var $El = $(El);
-			var $Stack = $BackgroundStack.find('[data-section=\'' + $El.attr('data-section') + '\']');
-			var $Prev = $Stack.find('.Stack__Image');
-			var $Loaded = $Stack.find('.Stack__Loaded');
-			
-			$Prev.on('load', function() { $(this).addClass('Preloaded'); });
-			$Loaded.on('load', function() { $(this).addClass('Preloaded'); });
-			
-			$Prev.attr('src', $Prev.attr('data-image'));
-			$Loaded.attr('src', $Loaded.attr('data-image-loaded'));
-			
-		}
-		function _Hide(El) {
-
-			var $El = $(El);
-			
-			$El.removeClass('Visible');
-			//$BackgroundStack.find('[data-section=\'' + $El.attr('data-section') + '\']').removeClass('Visible');//
-		}
 		
 	}
 	
