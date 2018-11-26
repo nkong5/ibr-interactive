@@ -143,7 +143,7 @@ li:last-child > .GreyList { margin-bottom:0; }
 .Label { transition:.3s background ease; line-height:1em; font-size:12px; letter-spacing:.1em; display:inline-block; text-transform:uppercase; border-radius:5px; text-decoration:none; padding:5px 15px; min-width:165px; text-align:center; position:relative; }
 .Label[data-style='Dark'] { background:#484848; color:#dedede; }
 
-.ButtonDl { transition:.3s background ease; font-size:12px; line-height:1em; display:block; border-radius:5px; text-decoration:none; width:inline-block; padding:5px; width:150px; text-align:center; margin-left:55px; position:relative; }
+.ButtonDl { transition:.3s background ease; font-size:12px; line-height:1em; display:block; border-radius:5px; text-decoration:none; padding:5px; width:150px; text-align:center; margin-left:55px; position:relative; }
 .ButtonDl::before { display:block; left:-50px; top:-4px; content:' '; position:absolute; width:30px; height:30px; background-position:center center; background-size:contain; background-repeat:no-repeat; }
 .ButtonDl[data-style='Light'] { background:#888888; color:#ffffff; }
 .ButtonDl[data-style='Light']:hover { background:#BBB; }
@@ -226,7 +226,7 @@ li:last-child > .GreyList { margin-bottom:0; }
 .Menu .Ribbon::before { display:inline-block; position:relative; top:2px; margin-right:10px; width:16px; height:16px; transform:rotate(90deg); background:url('assets/icon-arrow.png') center center no-repeat; background-size:contain; content:' '; transition:.3s transform ease; }
 .Menu .Lbl { margin-bottom:30px; text-align:center; }
 .Menu.Active .Ribbon::before { transform:rotate(-90deg); }
-
+.Menu .ButtonDl { white-space:nowrap; margin:1em 0 1em 55px; width:auto; display:inline-block;  }
 
 .Navlist { list-style-type:none; padding:0; margin:0; }
 .Navlist > li { display:block; position:relative; padding:0 0 60px 0; margin:0; }
