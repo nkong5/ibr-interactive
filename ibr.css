@@ -291,8 +291,13 @@ li:last-child > .GreyList { margin-bottom:0; }
 .Scroll .Wheel { position: absolute; top: 10%; left: 50%; width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background-color: #ffffff; animation: Scroll 0.9s infinite; }
 */
 
-
 .ChapterBox::after, .Box::after { position:absolute; top:10px; right:10px; display:block; content:' '; line-height:50px; font-size:14px; text-align:center; color:#fff; width:50px; height:50px; background-size:contain; background-position:center center; }
 [data-section='1'] .ChapterBox::after, [data-section='1_1'] .Box::after, [data-section='1_2'] .Box::after { content:'1'; background-image:url('assets/icon-1.svg'); }
 [data-section='2'] .ChapterBox::after, [data-section='2_1'] .Box::after, [data-section='2_2'] .Box::after, [data-section='2_3'] .Box::after, [data-section='2_4'] .Box::after { content:'2'; background-image:url('assets/icon-2.svg'); }
 [data-section='3'] .ChapterBox::after, [data-section='3_1'] .Box::after, [data-section='3_2'] .Box::after { content:'3'; background-image:url('assets/icon-3.svg'); }
+
+.LangSwitch { z-index:5; position:fixed; top:18px; right:20px; font-weight:700; background:#d1d1d1; border-radius:10px; }
+.LangSwitch > span { display:inline-block; border-radius:8px; background:#484747; color:#fff; padding:0 20px 2px;}
+.LangSwitch > a { text-decoration:none; padding:0 20px 2px; display:inline-block; color:#757575; transition:.3s color ease; }
+.LangSwitch > a:hover { color:#000; }
+@media (max-width:640px) {.LangSwitch { position:absolute; top: calc(50vw - 32px); }}
